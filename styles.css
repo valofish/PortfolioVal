@@ -164,7 +164,7 @@
 #skills::before,#skills::after,
 #proyectos::before,#proyectos::after,
 #contacto::before,#contacto::after{
-  content:"✳";
+  content:"✳\FE0E";
   position:absolute;
   z-index:0;
   pointer-events:none;
@@ -456,3 +456,5 @@
 .contact-line{width:100%}
 
 .portrait-placeholder.portrait-photo{--portrait-bg:var(--sage);justify-self:end;width:min(100%,380px);height:auto;min-height:0;aspect-ratio:1;border-radius:50%;background:var(--portrait-bg)}.portrait-photo:before,.portrait-photo:after{display:none}.portrait-photo img{position:absolute;left:50%;bottom:0;width:93%;height:auto;transform:translateX(-50%);display:block}@media(max-width:680px){.portrait-placeholder.portrait-photo{justify-self:center;width:min(72%,290px);height:auto;min-height:0}}
+/* Destellos del inicio como dibujo vectorial: en iPhone el símbolo ✳ se mostraba como emoji verde */
+.hero-spark svg{display:block;width:1em;height:1em}
