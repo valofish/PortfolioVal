@@ -458,3 +458,161 @@
 .portrait-placeholder.portrait-photo{--portrait-bg:var(--sage);justify-self:end;width:min(100%,380px);height:auto;min-height:0;aspect-ratio:1;border-radius:50%;background:var(--portrait-bg)}.portrait-photo:before,.portrait-photo:after{display:none}.portrait-photo img{position:absolute;left:50%;bottom:0;width:93%;height:auto;transform:translateX(-50%);display:block}@media(max-width:680px){.portrait-placeholder.portrait-photo{justify-self:center;width:min(72%,290px);height:auto;min-height:0}}
 /* Destellos del inicio como dibujo vectorial: en iPhone el símbolo ✳ se mostraba como emoji verde */
 .hero-spark svg{display:block;width:1em;height:1em}
+
+/* Portada aprobada como imagen completa, manteniendo su proporción en todos los tamaños. */
+#inicio.portfolio-cover{
+  position:relative;
+  isolation:isolate;
+  display:block;
+  width:100%;
+  height:100svh;
+  min-height:100svh;
+  padding:0;
+  overflow:hidden;
+  background:#F4E8D6;
+  scroll-margin-top:0;
+}
+#inicio.portfolio-cover:before,#inicio.portfolio-cover:after{content:none;display:none}
+.site-header{visibility:hidden;opacity:0;pointer-events:none;transition:opacity .2s ease,visibility .2s ease}
+.site-header.is-visible{visibility:visible;opacity:1;pointer-events:auto}
+.portfolio-artboard{
+  position:absolute;
+  left:50%;
+  top:50%;
+  width:min(100vw,150svh);
+  aspect-ratio:3/2;
+  transform:translate(-50%,-50%);
+  overflow:hidden;
+  background:#F4E8D6;
+}
+.portfolio-cover-image{display:block;width:100%;height:100%;object-fit:contain}
+#sobre-mi .about-copy h2{color:#e3c27d}
+@media(max-width:680px){
+  #inicio.portfolio-cover{display:grid;place-items:center}
+  #inicio.portfolio-cover .portfolio-artboard{position:relative;left:auto;top:auto;width:100%;height:auto;aspect-ratio:3/2;transform:none}
+}
+
+/* Acerca de mí: composición tipográfica inspirada en el diseño aprobado. */
+#sobre-mi.about{display:grid;place-items:center;min-height:100svh;padding:80px 7%;background:#30261f;color:#f5e9d7}
+#sobre-mi::before,#sobre-mi::after{content:none!important;display:none!important}
+#sobre-mi .about-layout{position:relative;width:min(1180px,100%);min-height:calc(100svh - 160px);margin:auto;display:grid;grid-template-columns:.98fr 1.02fr;column-gap:clamp(44px,7vw,96px);align-content:center;align-items:center;padding:90px 4.2%}
+#sobre-mi .about-intro{grid-column:1;grid-row:1;align-self:center;padding-top:0}
+#sobre-mi .about-intro h2{display:flex;flex-direction:column;gap:.035em;margin:0;font:800 clamp(78px,10.4vw,138px)/1 'Bricolage Grotesque',var(--sans);letter-spacing:-.065em;color:#e3bd67}
+#sobre-mi .about-intro h2 span:first-child{color:#f5e9d7}
+#sobre-mi .about-copy{grid-column:2;grid-row:1;max-width:540px;justify-self:end;padding-top:0}
+#sobre-mi .about-copy p{margin:0 0 14px;color:#f5e9d7;font:400 clamp(13px,1.18vw,16px)/1.75 var(--sans)}
+#sobre-mi .about-copy p strong{color:#e3bd67;font-weight:500}
+#sobre-mi .about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:19px}
+#sobre-mi .about-tags span{padding:6px 13px;border:1px solid #8b796b;border-radius:99px;color:#f5e9d7;font:500 10px var(--sans)}
+#sobre-mi .about-actions{display:flex;gap:12px;margin-top:19px}
+#sobre-mi .about-action{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 19px;border:1px solid #e3bd67;border-radius:99px;font:500 11px var(--sans);transition:background .2s,color .2s,transform .2s}
+#sobre-mi .about-action:hover{transform:translateY(-2px)}
+#sobre-mi .about-action-primary{background:#e3bd67;color:#30261f}
+#sobre-mi .about-action-primary:hover{background:#f0d28b}
+#sobre-mi .about-action-secondary{color:#e3bd67}
+#sobre-mi .about-action-secondary:hover{background:#e3bd6718}
+#sobre-mi .about-rule{position:absolute;left:0;right:0;display:flex;align-items:center;gap:58px;color:#e3bd67}
+#sobre-mi .about-rule-top{top:17px}
+#sobre-mi .about-rule-bottom{bottom:17px;justify-content:flex-end}
+#sobre-mi .about-rule span{height:2px;border-radius:4px;background:#8f887b;flex:1}
+#sobre-mi .about-rule i{font-style:normal;font-size:19px;line-height:1}
+@media(max-width:680px){
+  #sobre-mi.about{padding:72px 7% 45px}
+  #sobre-mi .about-layout{min-height:calc(100svh - 117px);grid-template-columns:1fr;gap:28px;padding:70px 2%}
+  #sobre-mi .about-intro,#sobre-mi .about-copy{grid-column:1;grid-row:auto;justify-self:stretch}
+  #sobre-mi .about-intro h2{font-size:clamp(72px,20vw,112px)}
+  #sobre-mi .about-copy p{font-size:13px;line-height:1.7;margin-bottom:12px}
+  #sobre-mi .about-tags{gap:6px;margin-top:15px}
+  #sobre-mi .about-tags span{font-size:9px;padding:6px 10px}
+  #sobre-mi .about-actions{margin-top:16px}
+  #sobre-mi .about-rule{gap:28px}
+  #sobre-mi .about-rule-top{top:15px}
+  #sobre-mi .about-rule-bottom{bottom:14px}
+}
+
+/* Contacto compacto al final del portafolio, en lugar de una pantalla completa. */
+#contacto.contact{display:block;width:100%;min-height:0;height:auto;padding:64px 8% 26px;background:#30261f;color:#f5e9d7;scroll-margin-top:58px}
+#contacto .contact-wrap{width:min(1080px,100%);min-height:0;margin:0 auto;display:grid;grid-template-columns:1.18fr .82fr;gap:7%;align-items:center}
+#contacto .contact-intro .eyebrow{margin:0 0 13px;color:#e3bd67;font-size:9px;letter-spacing:.14em}
+#contacto .contact-intro h2{margin:0;font:800 clamp(40px,5.2vw,70px)/.98 'Bricolage Grotesque',var(--sans);letter-spacing:-.055em;color:#f5e9d7}
+#contacto .contact-intro h2 em{font:inherit;color:#e39a68}
+#contacto .contact-details{width:100%;max-width:470px;justify-self:end}
+#contacto .contact-email{display:block;padding:16px 19px;border:1px solid #715b40;border-radius:13px;background:transparent}
+#contacto .contact-email span{display:grid;gap:5px;min-width:0}
+#contacto .contact-email small{font:8px var(--mono);letter-spacing:.12em;color:#d4b783}
+#contacto .contact-email strong{font:500 15px var(--sans);color:#e39a68;overflow-wrap:anywhere}
+#contacto .contact-buttons{display:flex;align-items:center;gap:10px;margin-top:15px}
+#contacto .contact-write,#contacto .contact-copy{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 21px;border:1px solid #887765;border-radius:99px;background:transparent;color:#f5e9d7;font:500 12px var(--sans);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+#contacto .contact-write{background:#e39a68;border-color:#e39a68;color:#30261f}
+#contacto .contact-write:hover{background:#f0ae80}
+#contacto .contact-copy:hover{border-color:#e3bd67;color:#e3bd67}
+#contacto .copy-feedback{min-height:1em;color:#e3bd67;font:9px var(--mono)}
+#contacto footer{width:min(1080px,100%);margin:62px auto 0;padding:18px 0 0;border-top:1px solid #574631;display:flex;justify-content:space-between;align-items:center;color:#e3bd67;font:9px var(--mono);letter-spacing:.08em}
+#contacto footer a{color:#e3bd67}
+@media(max-width:680px){
+  #contacto.contact{padding:42px 7% 18px}
+  #contacto .contact-wrap{grid-template-columns:1fr;gap:25px}
+  #contacto .contact-intro h2{font-size:clamp(38px,10vw,52px)}
+  #contacto .contact-details{max-width:none;justify-self:stretch}
+  #contacto .contact-email strong{font-size:12px}
+  #contacto .contact-buttons{flex-wrap:wrap}
+  #contacto footer{margin-top:34px;font-size:7px;gap:8px}
+}
+
+/* Afinación de paleta y legibilidad móvil. */
+#skills.skills{background:#f4e8d6}
+#skills .section-heading h2{color:#30261f}
+#skills .skill-group{border-radius:14px;box-shadow:0 7px 18px #30261f12}
+#skills .skill-group:nth-child(1){background:#b96246;border-color:transparent}
+#skills .skill-group:nth-child(2){background:#d4aa56;border-color:transparent}
+#skills .skill-group:nth-child(3){background:#758065;border-color:transparent}
+#skills .skill-group:nth-child(4){background:#765542;border-color:transparent}
+#skills .skill-group h3,#skills .skill-group .skill-tool{color:#fff2de}
+#skills .skill-group:nth-child(2) h3,#skills .skill-group:nth-child(2) .skill-tool{color:#30261f}
+#skills .skill-group:nth-child(2) .app-icon{border-color:#30261f99;color:#30261f}
+#skills .skill-group:nth-child(2) .skill-tool small{color:#30261f}
+#skills .skill-group:not(:nth-child(2)) .app-icon{border-color:#fff0d8;color:#fff0d8}
+#skills .skill-group:not(:nth-child(2)) .skill-tool small{color:#fff2de}
+#sobre-mi,#skills,#proyectos,#contacto{scroll-margin-top:58px}
+@media(max-width:680px){
+  .site-header{height:50px}
+  .site-nav{flex-direction:column;align-items:stretch;gap:4px;padding:10px 5% 14px}
+  .site-nav a{padding:9px 4px;border-bottom:1px solid #ffffff18}
+  .site-nav a.nav-contact{align-self:flex-start;margin-top:5px;padding:8px 15px;border:0}
+  #skills.skills{padding:76px 6% 42px}
+  #skills .section-heading{margin-bottom:17px}
+  #skills .section-heading h2{font-size:clamp(44px,11vw,58px)}
+  #skills .skill-groups{gap:10px}
+  #skills .skill-group{min-height:0;padding:14px 12px;border-radius:13px}
+  #skills .skill-group h3{font-size:13px;line-height:1.25;min-height:31px;margin-bottom:9px}
+  #skills .skill-tools{gap:7px}
+  #skills .skill-tool{width:calc(50% - 4px);min-height:63px;gap:4px}
+  #skills .app-icon{width:34px;height:34px;font-size:14px}
+  #skills .skill-tool small{font-size:9px}
+  #contacto footer{flex-wrap:wrap;justify-content:space-between}
+}
+@media(max-width:390px){
+  #skills .skill-groups{grid-template-columns:1fr}
+  #skills .skill-group h3{font-size:14px;min-height:0}
+  #skills .skill-tool{width:62px;min-height:62px}
+  #contacto .contact-intro h2{font-size:clamp(36px,10vw,44px)}
+}
+
+/* Navegación flotante en cápsula, inspirada en la referencia. */
+.site-header{position:fixed;top:0;left:0;right:0;width:100%;height:54px;padding:0 6.5%;justify-content:center;border:0;border-bottom:1px solid #574631;border-radius:0;background:rgba(48,38,31,.96);box-shadow:none;backdrop-filter:blur(14px);visibility:visible;opacity:1;pointer-events:auto}
+.site-header.is-visible{visibility:visible;opacity:1;pointer-events:auto}
+.wordmark{color:#f5e9d7;font-size:16px}
+.wordmark span{color:#e39a68}
+.site-nav{gap:clamp(16px,3vw,35px)}
+.site-nav a{color:#f5e9d7;font-size:11px}
+.site-nav a:after{bottom:-5px;background:#e3bd67}
+.site-nav a.nav-contact{padding:8px 17px;border-radius:99px;background:#e39a68;color:#30261f}
+.site-nav a.nav-contact:after{display:none}
+.site-nav a.nav-contact:hover{background:#f0ae80}
+.menu-toggle{color:#f5e9d7}
+@media(max-width:680px){
+  .site-header{top:0;left:0;right:0;width:100%;height:50px;padding:0 5%;justify-content:flex-end;border-bottom:1px solid #574631;border-radius:0}
+  .site-nav{top:49px;left:0;right:0;padding:14px 5% 18px;gap:10px;background:rgba(48,38,31,.98);border:0;border-bottom:1px solid #745f49;border-radius:0;box-shadow:0 12px 18px #30261f28}
+  .site-nav a{padding:7px 5px;color:#f5e9d7}
+  .site-nav a.nav-contact{padding:8px 14px}
+}

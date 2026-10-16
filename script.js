@@ -51,5 +51,8 @@ dialog.addEventListener('click',event=>{if(event.target===dialog)closeDialog()})
 dialog.addEventListener('close',()=>document.body.classList.remove('modal-open'));
 document.addEventListener('keydown',event=>{if(!dialog.open)return;if(event.key==='ArrowLeft'&&currentMedia>0){currentMedia--;showMedia()}if(event.key==='ArrowRight'&&currentMedia<currentProject.media.length-1){currentMedia++;showMedia()}});
 window.addEventListener('resize',()=>{if(dialog.open){const img=modalMedia.querySelector('img');if(img)fitDialogImage(img)}});
+const siteHeader=document.querySelector('.site-header');const syncSiteHeader=()=>{siteHeader.classList.add('is-visible');siteHeader.inert=false};window.addEventListener('scroll',syncSiteHeader,{passive:true});syncSiteHeader();
 const menuButton=document.querySelector('.menu-toggle');const nav=document.querySelector('.site-nav');menuButton.addEventListener('click',()=>{const expanded=menuButton.getAttribute('aria-expanded')==='true';menuButton.setAttribute('aria-expanded',String(!expanded));nav.classList.toggle('nav-open',!expanded)});nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('nav-open');menuButton.setAttribute('aria-expanded','false')}));
+const copyEmailButton=document.querySelector('[data-copy-email]');
+copyEmailButton.addEventListener('click',async()=>{const feedback=document.querySelector('.copy-feedback');try{await navigator.clipboard.writeText(copyEmailButton.dataset.copyEmail);feedback.textContent='¡Correo copiado!';copyEmailButton.textContent='Copiado'}catch{feedback.textContent='Selecciona el correo para copiarlo'}window.setTimeout(()=>{feedback.textContent='';copyEmailButton.textContent='Copiar correo'},2200)});
 renderProjects();
